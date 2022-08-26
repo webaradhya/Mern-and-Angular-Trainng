@@ -1,0 +1,29 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+    font-family: sans-serif;
+    background-color:  #f5f6f7;
+}
+.header{
+    text-align: center;
+    padding: 32px;
+    background-color: #E0DDDD;
+}
+#gallery{
+    margin-left: 25px;
+}
+#gallery img{
+    margin-top: 8px;
+    padding: 0 4px;
+    height: 300px;
+    width: 300px;
+    border-radius: 10px;
+}
+@media (max-width: 800px) {
+    #gallery img {
+    width: 50%;
+    }
+}
+   

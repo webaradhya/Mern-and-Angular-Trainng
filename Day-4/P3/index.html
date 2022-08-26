@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="UTF-8">
+        <title>Registration Form</title>
+        <style>
+            *{
+                background-color: #1b1b32;
+                color: #f5f6f7;
+            }
+            body{
+                font: Tahoma;
+                font-size: 16px;
+            }
+            h1,h3{
+                text-align: center;
+                margin: 1em auto;
+            }
+            fieldset{
+                border: none;
+                padding: 1rem 0 0 0;
+            }
+            form{
+                margin:0px 400px;
+                max-width: 500px;
+                min-width: 300px;
+                font-size: larger;
+            }
+            label{
+                display: block;
+                margin: 0.5rem 0;
+            }
+            .info input{
+                width: 85%;
+                height: 25px;
+                border-color: #f5f6f7;
+            }
+            .submit{
+                margin-left: 120px;
+                padding: 10px 10px 5px 10px;
+                font-size: larger;
+            }
+        </style>
+    <body>
+        <h1>Registration Form</h1>
+        <h3>Please fill out this form with the required information</h3>
+        <form action="https://register-demo.freecodecamp.org/">
+            <fieldset class="info">
+                <label>Enter Your First Name: <br><input type="text" name="first" ></label>
+                <label>Enter Your Last Name:<br><input type="text" name="last" ></label>
+                <label>Enter Your Email:<br><input type="email" name="email" ></label>
+                <label>Create a New Password:<br><input type="password" name="pass"></label>
+            </fieldset>
+            <fieldset>
+                <label><input type="radio" name="account-type"> Personal Account</label>
+                <label><input type="radio" name="account-type"> Buisness Account</label>
+                <label><input type="checkbox" required>I accept the <a href="https://www.freecodecamp.org/news/terms-of-service/" style="text-decoration:none">terms and conditions</a></label>
+            </fieldset>
+            <fieldset>
+                <label>Upload Profile Picture: <input type="file" name="profile" accept="image/png, image/jpeg"></label>
+                <label>Input your age(years): <input type="number" name="age" min="13" max="120"></label>
+                <label>How did you hear about us? 
+                    <select>
+                        <option value="">(select one)</option>
+                        <option value="1">freeCodeCamp News</option>
+                        <option value="2">freeCodeCamp YouTube Channel</option>
+                        <option value="3">freeCodeCamp Forum</option>
+                        <option value="4">Other</option>
+                    </select>
+                </label>
+                <label>Provide a bio:<br><textarea cols="30" rows="3" name="text"></textarea></label>
+            </fieldset>
+            <input class="submit" type="submit" name="submit">
+        </form>
+    </body>
+</html>

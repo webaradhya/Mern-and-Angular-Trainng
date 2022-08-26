@@ -1,0 +1,51 @@
+body{
+    background-image: url("beans.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: sans-serif;
+}
+
+.menu{
+    width: 50%;
+    background-color: burlywood;
+    margin: 0px auto 0px auto;
+}
+
+header{
+    border-bottom: 3px solid #800000;
+    margin: 0px 30px 0px 30px;
+}
+
+.heading-1{
+    text-align: center;
+    font-weight: 800;
+}
+.heading-2{
+    text-align: center;
+    font-style: italic;
+    font-weight: 600;
+}
+
+.menu-1{
+    text-align: center;
+    font-weight: 800;
+}
+
+.item p{
+    display: inline-block;
+    font-weight: 600;
+}
+
+.flavour{
+    text-align: left;
+    width: 40%;
+    padding-left: 40px;
+}
+
+.pricing{
+    text-align: right;
+    width: 45%;
+    padding-right: 10px;
+}
+
