@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Calculate MPG</title>
+   	<link rel="stylesheet" href="mpg.css">
+   	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>	
+   	<script>
+   		var $ = function (id) {
+		    return document.getElementById(id);
+		}
+    	var calculateMpg = function () {
+			var miles = parseFloat($("miles").value);
+			var gallons = parseFloat($("gallons").value);
+			
+			if(isNaN(miles)) {
+				alert("Miles must be numeric");
+			}
+			else if(miles < 0){
+				alert(" Miles must be greater than zero");
+			}
+			else if(isNaN(gallons)){
+				alert("Gallons must be numeric");
+			}
+			else if(gallons < 0){
+				alert("Gallons must be greater than zero");
+			}
+			else {
+				var mpg = miles / gallons;
+				$("mpg").value = mpg.toFixed(1);
+			}
+		}
+		function clearF(){
+			var mile = document.getElementById("miles").value = "";
+			var gallon = document.getElementById("gallons").value = "";
+			var mpg = document.getElementById("mpg").value = "";
+			if(mile != "" || gallon != "" || mpg != ""){
+				mile = "";
+				gallon ="";
+				mpg = "";
+			}
+		}
+		window.onload = function () {
+		    $("calculate").onclick = calculateMpg;
+		    $("miles").focus();
+		}
+   	</script>
+</head>
+<body>
+    <section id="myform">
+        <h1>Calculate Miles Per Gallon</h1>
+        <label for="miles">Miles Driven:</label>
+	    <input type="text" id="miles"><br>
+        <label for="gallons">Gallons of Gas Used:</label>
+        <input type="text" id="gallons"><br>
+        <label for="mpg">Miles Per Gallon</label>
+        <input type="text" id="mpg" disabled><br>
+        <label>&nbsp;</label>
+        <input type="button" id="calculate" value="Calculate MPG"><br>
+		<label>&nbsp;</label>
+        <input type="button" id="clear_entries" value="Clear Entries" onclick="clearF()">
+    </section>
+</body>
+</html>
