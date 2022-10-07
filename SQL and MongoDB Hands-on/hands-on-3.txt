@@ -1,0 +1,478 @@
+mysql> use pubs;
+Database changed
+
+mysql> select title,price from titles order by title,price desc;
++-----------------------------------------------------------------+---------+
+| title                                                           | price   |
++-----------------------------------------------------------------+---------+
+| But Is It User Friendly?                                        | 22.9500 |
+| Computer Phobic AND Non-Phobic Individuals: Behavior Variations | 21.5900 |
+| Cooking with Computers: Surreptitious Balance Sheets            | 11.9500 |
+| Emotional Security: A New Algorithm                             |  7.9900 |
+| Fifty Years in Buckingham Palace Kitchens                       | 11.9500 |
+| Is Anger the Enemy?                                             | 10.9500 |
+| Life Without Fear                                               |  7.0000 |
+| Net Etiquette                                                   |    NULL |
+| Onions, Leeks, and Garlic: Cooking Secrets of the Mediterranean | 20.9500 |
+| Prolonged Data Deprivation: Four Case Studies                   | 19.9900 |
+| Secrets of Silicon Valley                                       | 20.0000 |
+| Silicon Valley Gastronomic Treats                               | 19.9900 |
+| Straight Talk About Computers                                   | 19.9900 |
+| Sushi, Anyone?                                                  | 14.9900 |
+| The Busy Executive's Database Guide                             | 19.9900 |
+| The Gourmet Microwave                                           |  2.9900 |
+| The Psychology of Computer Cooking                              |    NULL |
+| You Can Combat Computer Stress!                                 |  2.9900 |
++-----------------------------------------------------------------+---------+
+18 rows in set (0.00 sec)
+
+mysql> select title,price from titles order by price desc;
++-----------------------------------------------------------------+---------+
+| title                                                           | price   |
++-----------------------------------------------------------------+---------+
+| But Is It User Friendly?                                        | 22.9500 |
+| Computer Phobic AND Non-Phobic Individuals: Behavior Variations | 21.5900 |
+| Onions, Leeks, and Garlic: Cooking Secrets of the Mediterranean | 20.9500 |
+| Secrets of Silicon Valley                                       | 20.0000 |
+| The Busy Executive's Database Guide                             | 19.9900 |
+| Straight Talk About Computers                                   | 19.9900 |
+| Silicon Valley Gastronomic Treats                               | 19.9900 |
+| Prolonged Data Deprivation: Four Case Studies                   | 19.9900 |
+| Sushi, Anyone?                                                  | 14.9900 |
+| Cooking with Computers: Surreptitious Balance Sheets            | 11.9500 |
+| Fifty Years in Buckingham Palace Kitchens                       | 11.9500 |
+| Is Anger the Enemy?                                             | 10.9500 |
+| Emotional Security: A New Algorithm                             |  7.9900 |
+| Life Without Fear                                               |  7.0000 |
+| You Can Combat Computer Stress!                                 |  2.9900 |
+| The Gourmet Microwave                                           |  2.9900 |
+| The Psychology of Computer Cooking                              |    NULL |
+| Net Etiquette                                                   |    NULL |
++-----------------------------------------------------------------+---------+
+18 rows in set (0.00 sec)
+
+mysql> select title,pubdate from titles order by pubdate;
++-----------------------------------------------------------------+------------+
+| title                                                           | pubdate    |
++-----------------------------------------------------------------+------------+
+| The Psychology of Computer Cooking                              | NULL       |
+| Net Etiquette                                                   | NULL       |
+| Cooking with Computers: Surreptitious Balance Sheets            | 1991-06-09 |
+| Silicon Valley Gastronomic Treats                               | 1991-06-09 |
+| The Busy Executive's Database Guide                             | 1991-06-12 |
+| Prolonged Data Deprivation: Four Case Studies                   | 1991-06-12 |
+| Emotional Security: A New Algorithm                             | 1991-06-12 |
+| Fifty Years in Buckingham Palace Kitchens                       | 1991-06-12 |
+| Sushi, Anyone?                                                  | 1991-06-12 |
+| Is Anger the Enemy?                                             | 1991-06-15 |
+| The Gourmet Microwave                                           | 1991-06-18 |
+| Straight Talk About Computers                                   | 1991-06-22 |
+| You Can Combat Computer Stress!                                 | 1991-06-30 |
+| But Is It User Friendly?                                        | 1991-06-30 |
+| Life Without Fear                                               | 1991-10-05 |
+| Computer Phobic AND Non-Phobic Individuals: Behavior Variations | 1991-10-21 |
+| Onions, Leeks, and Garlic: Cooking Secrets of the Mediterranean | 1991-10-21 |
+| Secrets of Silicon Valley                                       | 1994-06-12 |
++-----------------------------------------------------------------+------------+
+18 rows in set (0.00 sec)
+
+mysql>  select title_id,price,5*ytd_sales as 'Revised Sales' from titles order by 'Revised Sales';
++----------+---------+---------------+
+| title_id | price   | Revised Sales |
++----------+---------+---------------+
+| BU1032   | 19.9900 |         20475 |
+| BU1111   | 11.9500 |         19380 |
+| BU2075   |  2.9900 |         93610 |
+| BU7832   | 19.9900 |         20475 |
+| MC2222   | 19.9900 |         10160 |
+| MC3021   |  2.9900 |        111230 |
+| MC3026   |    NULL |          NULL |
+| PC1035   | 22.9500 |         43900 |
+| PC8888   | 20.0000 |         20475 |
+| PC9999   |    NULL |          NULL |
+| PS1372   | 21.5900 |          1875 |
+| PS2091   | 10.9500 |         10225 |
+| PS2106   |  7.0000 |           555 |
+| PS3333   | 19.9900 |         20360 |
+| PS7777   |  7.9900 |         16680 |
+| TC3218   | 20.9500 |          1875 |
+| TC4203   | 11.9500 |         75480 |
+| TC7777   | 14.9900 |         20475 |
++----------+---------+---------------+
+18 rows in set (0.00 sec)
+
+mysql>  select title_id,price,5*ytd_sales as 'Revised Sales' from titles order by 5*ytd_sales;
++----------+---------+---------------+
+| title_id | price   | Revised Sales |
++----------+---------+---------------+
+| MC3026   |    NULL |          NULL |
+| PC9999   |    NULL |          NULL |
+| PS2106   |  7.0000 |           555 |
+| PS1372   | 21.5900 |          1875 |
+| TC3218   | 20.9500 |          1875 |
+| MC2222   | 19.9900 |         10160 |
+| PS2091   | 10.9500 |         10225 |
+| PS7777   |  7.9900 |         16680 |
+| BU1111   | 11.9500 |         19380 |
+| PS3333   | 19.9900 |         20360 |
+| BU1032   | 19.9900 |         20475 |
+| BU7832   | 19.9900 |         20475 |
+| PC8888   | 20.0000 |         20475 |
+| TC7777   | 14.9900 |         20475 |
+| PC1035   | 22.9500 |         43900 |
+| TC4203   | 11.9500 |         75480 |
+| BU2075   |  2.9900 |         93610 |
+| MC3021   |  2.9900 |        111230 |
++----------+---------+---------------+
+18 rows in set (0.00 sec)
+
+mysql> select title_id,price,5*ytd_sales as 'Revised Sales' from titles order by 3;
++----------+---------+---------------+
+| title_id | price   | Revised Sales |
++----------+---------+---------------+
+| MC3026   |    NULL |          NULL |
+| PC9999   |    NULL |          NULL |
+| PS2106   |  7.0000 |           555 |
+| PS1372   | 21.5900 |          1875 |
+| TC3218   | 20.9500 |          1875 |
+| MC2222   | 19.9900 |         10160 |
+| PS2091   | 10.9500 |         10225 |
+| PS7777   |  7.9900 |         16680 |
+| BU1111   | 11.9500 |         19380 |
+| PS3333   | 19.9900 |         20360 |
+| BU1032   | 19.9900 |         20475 |
+| BU7832   | 19.9900 |         20475 |
+| PC8888   | 20.0000 |         20475 |
+| TC7777   | 14.9900 |         20475 |
+| PC1035   | 22.9500 |         43900 |
+| TC4203   | 11.9500 |         75480 |
+| BU2075   |  2.9900 |         93610 |
+| MC3021   |  2.9900 |        111230 |
++----------+---------+---------------+
+18 rows in set (0.00 sec)
+
+mysql> select au_fname,au_lname,city,state from authors order by au_fname;
++-------------+----------------+----------------+-------+
+| au_fname    | au_lname       | city           | state |
++-------------+----------------+----------------+-------+
+| Abraham     | Bennet         | Berkeley       | CA    |
+| Akiko       | Yokomoto       | Walnut Creek   | CA    |
+| Albert      | Ringer         | Salt Lake City | UT    |
+| Ann         | Dull           | Palo Alto      | CA    |
+| Anne        | Ringer         | Salt Lake City | UT    |
+| Burt        | Gringlesby     | Covelo         | CA    |
+| Charlene    | Locksley       | San Francisco  | CA    |
+| Cheryl      | Carson         | Berkeley       | CA    |
+| Dean        | Straight       | Oakland        | CA    |
+| Dirk        | Stringer       | Oakland        | CA    |
+| Heather     | McBadden       | Vacaville      | CA    |
+| Innes       | del Castillo   | Ann Arbor      | MI    |
+| Johnson     | White          | Menlo Park     | CA    |
+| Livia       | Karsen         | Oakland        | CA    |
+| Marjorie    | Green          | Oakland        | CA    |
+| Meander     | Smith          | Lawrence       | KS    |
+| Michael     | O'Leary        | San Jose       | CA    |
+| Michel      | DeFrance       | Gary           | IN    |
+| Morningstar | Greene         | Nashville      | TN    |
+| Reginald    | Blotchet-Halls | Corvallis      | OR    |
+| Sheryl      | Hunter         | Palo Alto      | CA    |
+| Stearns     | MacFeather     | Oakland        | CA    |
+| Sylvia      | Panteley       | Rockville      | MD    |
++-------------+----------------+----------------+-------+
+23 rows in set (0.00 sec)
+
+mysql> select au_fname,city,state from authors order by state asc,city desc;
++-------------+----------------+-------+
+| au_fname    | city           | state |
++-------------+----------------+-------+
+| Akiko       | Walnut Creek   | CA    |
+| Heather     | Vacaville      | CA    |
+| Michael     | San Jose       | CA    |
+| Charlene    | San Francisco  | CA    |
+| Ann         | Palo Alto      | CA    |
+| Sheryl      | Palo Alto      | CA    |
+| Marjorie    | Oakland        | CA    |
+| Dean        | Oakland        | CA    |
+| Dirk        | Oakland        | CA    |
+| Stearns     | Oakland        | CA    |
+| Livia       | Oakland        | CA    |
+| Johnson     | Menlo Park     | CA    |
+| Burt        | Covelo         | CA    |
+| Cheryl      | Berkeley       | CA    |
+| Abraham     | Berkeley       | CA    |
+| Michel      | Gary           | IN    |
+| Meander     | Lawrence       | KS    |
+| Sylvia      | Rockville      | MD    |
+| Innes       | Ann Arbor      | MI    |
+| Reginald    | Corvallis      | OR    |
+| Morningstar | Nashville      | TN    |
+| Anne        | Salt Lake City | UT    |
+| Albert      | Salt Lake City | UT    |
++-------------+----------------+-------+
+23 rows in set (0.00 sec)
+
+mysql> select au_fname,city,state from authors order by city desc;
++-------------+----------------+-------+
+| au_fname    | city           | state |
++-------------+----------------+-------+
+| Akiko       | Walnut Creek   | CA    |
+| Heather     | Vacaville      | CA    |
+| Michael     | San Jose       | CA    |
+| Charlene    | San Francisco  | CA    |
+| Anne        | Salt Lake City | UT    |
+| Albert      | Salt Lake City | UT    |
+| Sylvia      | Rockville      | MD    |
+| Ann         | Palo Alto      | CA    |
+| Sheryl      | Palo Alto      | CA    |
+| Marjorie    | Oakland        | CA    |
+| Dean        | Oakland        | CA    |
+| Dirk        | Oakland        | CA    |
+| Stearns     | Oakland        | CA    |
+| Livia       | Oakland        | CA    |
+| Morningstar | Nashville      | TN    |
+| Johnson     | Menlo Park     | CA    |
+| Meander     | Lawrence       | KS    |
+| Michel      | Gary           | IN    |
+| Burt        | Covelo         | CA    |
+| Reginald    | Corvallis      | OR    |
+| Cheryl      | Berkeley       | CA    |
+| Abraham     | Berkeley       | CA    |
+| Innes       | Ann Arbor      | MI    |
++-------------+----------------+-------+
+23 rows in set (0.00 sec)
+
+mysql> select au_fname,city,state from authors order by state asc , city desc;
++-------------+----------------+-------+
+| au_fname    | city           | state |
++-------------+----------------+-------+
+| Akiko       | Walnut Creek   | CA    |
+| Heather     | Vacaville      | CA    |
+| Michael     | San Jose       | CA    |
+| Charlene    | San Francisco  | CA    |
+| Ann         | Palo Alto      | CA    |
+| Sheryl      | Palo Alto      | CA    |
+| Marjorie    | Oakland        | CA    |
+| Dean        | Oakland        | CA    |
+| Dirk        | Oakland        | CA    |
+| Stearns     | Oakland        | CA    |
+| Livia       | Oakland        | CA    |
+| Johnson     | Menlo Park     | CA    |
+| Burt        | Covelo         | CA    |
+| Cheryl      | Berkeley       | CA    |
+| Abraham     | Berkeley       | CA    |
+| Michel      | Gary           | IN    |
+| Meander     | Lawrence       | KS    |
+| Sylvia      | Rockville      | MD    |
+| Innes       | Ann Arbor      | MI    |
+| Reginald    | Corvallis      | OR    |
+| Morningstar | Nashville      | TN    |
+| Anne        | Salt Lake City | UT    |
+| Albert      | Salt Lake City | UT    |
++-------------+----------------+-------+
+23 rows in set (0.00 sec)
+
+mysql> select au_fname,city,state from authors order by city desc , state asc;
++-------------+----------------+-------+
+| au_fname    | city           | state |
++-------------+----------------+-------+
+| Akiko       | Walnut Creek   | CA    |
+| Heather     | Vacaville      | CA    |
+| Michael     | San Jose       | CA    |
+| Charlene    | San Francisco  | CA    |
+| Anne        | Salt Lake City | UT    |
+| Albert      | Salt Lake City | UT    |
+| Sylvia      | Rockville      | MD    |
+| Ann         | Palo Alto      | CA    |
+| Sheryl      | Palo Alto      | CA    |
+| Marjorie    | Oakland        | CA    |
+| Dean        | Oakland        | CA    |
+| Dirk        | Oakland        | CA    |
+| Stearns     | Oakland        | CA    |
+| Livia       | Oakland        | CA    |
+| Morningstar | Nashville      | TN    |
+| Johnson     | Menlo Park     | CA    |
+| Meander     | Lawrence       | KS    |
+| Michel      | Gary           | IN    |
+| Burt        | Covelo         | CA    |
+| Reginald    | Corvallis      | OR    |
+| Cheryl      | Berkeley       | CA    |
+| Abraham     | Berkeley       | CA    |
+| Innes       | Ann Arbor      | MI    |
++-------------+----------------+-------+
+23 rows in set (0.00 sec)
+
+mysql> select * from publishers where length(country) !=3;
++--------+---------------------+---------+-------+---------+
+| pub_id | pub_name            | city    | state | country |
++--------+---------------------+---------+-------+---------+
+| 9901   | GGG&G               | MGnchen | NULL  | Germany |
+| 9999   | Lucerene Publishing | Paris   | NULL  | France  |
++--------+---------------------+---------+-------+---------+
+2 rows in set (0.00 sec)
+
+mysql> select round(royalty,2) from titles;
++------------------+
+| round(royalty,2) |
++------------------+
+|               10 |
+|               10 |
+|               24 |
+|               10 |
+|               12 |
+|               24 |
+|             NULL |
+|               16 |
+|               10 |
+|             NULL |
+|               10 |
+|               12 |
+|               10 |
+|               10 |
+|               10 |
+|               10 |
+|               14 |
+|               10 |
++------------------+
+18 rows in set (0.00 sec)
+
+mysql> select ytd_sales*royalty/100 as 'Royalty Amount' from titles where 'Royalty Amount' >=1000;
+Empty set, 1 warning (0.01 sec)
+
+mysql> select ytd_sales*royalty/100 as 'Royalty Amount' from titles ;
++----------------+
+| Royalty Amount |
++----------------+
+|       409.5000 |
+|       387.6000 |
+|      4493.2800 |
+|       409.5000 |
+|       243.8400 |
+|      5339.0400 |
+|           NULL |
+|      1404.8000 |
+|       409.5000 |
+|           NULL |
+|        37.5000 |
+|       245.4000 |
+|        11.1000 |
+|       407.2000 |
+|       333.6000 |
+|        37.5000 |
+|      2113.4400 |
+|       409.5000 |
++----------------+
+18 rows in set (0.00 sec)
+
+mysql> select Royalty Amount from titles;
++--------+
+| Amount |
++--------+
+|     10 |
+|     10 |
+|     24 |
+|     10 |
+|     12 |
+|     24 |
+|   NULL |
+|     16 |
+|     10 |
+|   NULL |
+|     10 |
+|     12 |
+|     10 |
+|     10 |
+|     10 |
+|     10 |
+|     14 |
+|     10 |
++--------+
+18 rows in set (0.00 sec)
+
+mysql> select round(ytd_sales*royalty/100) as "Royalty Amount" from titles;
++----------------+
+| Royalty Amount |
++----------------+
+|            410 |
+|            388 |
+|           4493 |
+|            410 |
+|            244 |
+|           5339 |
+|           NULL |
+|           1405 |
+|            410 |
+|           NULL |
+|             38 |
+|            245 |
+|             11 |
+|            407 |
+|            334 |
+|             38 |
+|           2113 |
+|            410 |
++----------------+
+18 rows in set (0.00 sec)
+
+mysql> system cls
+mysql> select title from titles where month(pubdate) = 6;
++------------------------------------------------------+
+| title                                                |
++------------------------------------------------------+
+| The Busy Executive's Database Guide                  |
+| Cooking with Computers: Surreptitious Balance Sheets |
+| You Can Combat Computer Stress!                      |
+| Straight Talk About Computers                        |
+| Silicon Valley Gastronomic Treats                    |
+| The Gourmet Microwave                                |
+| But Is It User Friendly?                             |
+| Secrets of Silicon Valley                            |
+| Is Anger the Enemy?                                  |
+| Prolonged Data Deprivation: Four Case Studies        |
+| Emotional Security: A New Algorithm                  |
+| Fifty Years in Buckingham Palace Kitchens            |
+| Sushi, Anyone?                                       |
++------------------------------------------------------+
+13 rows in set (0.01 sec)
+
+mysql>  select title from titles where month(pubdate) = 6 and year(pubdate)=1991;
++------------------------------------------------------+
+| title                                                |
++------------------------------------------------------+
+| The Busy Executive's Database Guide                  |
+| Cooking with Computers: Surreptitious Balance Sheets |
+| You Can Combat Computer Stress!                      |
+| Straight Talk About Computers                        |
+| Silicon Valley Gastronomic Treats                    |
+| The Gourmet Microwave                                |
+| But Is It User Friendly?                             |
+| Is Anger the Enemy?                                  |
+| Prolonged Data Deprivation: Four Case Studies        |
+| Emotional Security: A New Algorithm                  |
+| Fifty Years in Buckingham Palace Kitchens            |
+| Sushi, Anyone?                                       |
++------------------------------------------------------+
+12 rows in set (0.00 sec)
+
+mysql>  select title from titles where month(pubdate) = 6 and weekday(pubdate)=6; 
++------------------------------------------------------+
+| title                                                |
++------------------------------------------------------+
+| Cooking with Computers: Surreptitious Balance Sheets |
+| You Can Combat Computer Stress!                      |
+| Silicon Valley Gastronomic Treats                    |
+| But Is It User Friendly?                             |
+| Secrets of Silicon Valley                            |
++------------------------------------------------------+
+5 rows in set (0.01 sec)
+
+mysql> select title,pubdate from titles where month(pubdate) = 6 and weekday(pubdate)=6;
++------------------------------------------------------+------------+
+| title                                                | pubdate    |
++------------------------------------------------------+------------+
+| Cooking with Computers: Surreptitious Balance Sheets | 1991-06-09 |
+| You Can Combat Computer Stress!                      | 1991-06-30 |
+| Silicon Valley Gastronomic Treats                    | 1991-06-09 |
+| But Is It User Friendly?                             | 1991-06-30 |
+| Secrets of Silicon Valley                            | 1994-06-12 |
++------------------------------------------------------+------------+
+5 rows in set (0.00 sec)

@@ -1,0 +1,243 @@
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| cafenodejs         |
+| information_schema |
+| mysql              |
+| performance_schema |
+| pubs               |
+| sakila             |
+| sys                |
+| world              |
++--------------------+
+8 rows in set (0.11 sec)
+
+mysql> use pubs;
+Database changed
+
+mysql> CREATE TABLE MY_EMPLOYEE(ID INT(4) PRIMARY KEY AUTO_INCREMENT,LAST_NAME VARCHAR(25),FIRST_NAME VARCHAR(25),USERID  VARCHAR(8),SALARY FLOAT(9,2));
+Query OK, 0 rows affected, 2 warnings (0.10 sec)
+
+mysql> -- 2
+mysql> DESC MY_EMPLOYEE;
++------------+-------------+------+-----+---------+----------------+
+| Field      | Type        | Null | Key | Default | Extra          |
++------------+-------------+------+-----+---------+----------------+
+| ID         | int         | NO   | PRI | NULL    | auto_increment |
+| LAST_NAME  | varchar(25) | YES  |     | NULL    |                |
+| FIRST_NAME | varchar(25) | YES  |     | NULL    |                |
+| USERID     | varchar(8)  | YES  |     | NULL    |                |
+| SALARY     | float(9,2)  | YES  |     | NULL    |                |
++------------+-------------+------+-----+---------+----------------+
+5 rows in set (0.02 sec)
+
+mysql> -- 3
+mysql> INSERT INTO MY_EMPLOYEE VALUES (1,'Patel','Ralph','rpatel',795);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> SELECT * FROM MY_EMPLOYEE
+    -> ;
++----+-----------+------------+--------+--------+
+| ID | LAST_NAME | FIRST_NAME | USERID | SALARY |
++----+-----------+------------+--------+--------+
+|  1 | Patel     | Ralph      | rpatel | 795.00 |
++----+-----------+------------+--------+--------+
+1 row in set (0.04 sec)
+
+mysql> INSERT INTO MY_EMPLOYEE VALUES (1,'Dancs','Betty','bdancs',860);
+ERROR 1062 (23000): Duplicate entry '1' for key 'my_employee.PRIMARY'
+mysql> INSERT INTO MY_EMPLOYEE VALUES (2,'Dancs','Betty','bdancs',860);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> INSERT INTO MY_EMPLOYEE VALUES (3,'Biri','Ben','bbiri',1100);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO MY_EMPLOYEE VALUES (4,'Newman','Chad','cnewman',750);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> INSERT INTO MY_EMPLOYEE VALUES (5,'Ropeburn','Audry','aropeburn',1550);
+ERROR 1406 (22001): Data too long for column 'USERID' at row 1
+mysql> INSERT INTO MY_EMPLOYEE VALUES (5,'Ropeburn','Audry','aropeburn',1550);
+ERROR 1406 (22001): Data too long for column 'USERID' at row 1
+mysql> select * from MY_EMPLOYEE;
++----+-----------+------------+---------+---------+
+| ID | LAST_NAME | FIRST_NAME | USERID  | SALARY  |
++----+-----------+------------+---------+---------+
+|  1 | Patel     | Ralph      | rpatel  |  795.00 |
+|  2 | Dancs     | Betty      | bdancs  |  860.00 |
+|  3 | Biri      | Ben        | bbiri   | 1100.00 |
+|  4 | Newman    | Chad       | cnewman |  750.00 |
++----+-----------+------------+---------+---------+
+4 rows in set (0.00 sec)
+
+mysql> INSERT INTO MY_EMPLOYEE VALUES (5,'Ropeburn','Audry','aropeburn',1550);
+ERROR 1406 (22001): Data too long for column 'USERID' at row 1
+mysql> INSERT INTO MY_EMPLOYEE VALUES (5,'Ropeburn','Audry','aropeburn',1550);
+ERROR 1406 (22001): Data too long for column 'USERID' at row 1
+mysql> insert into MY_EMPLOYEE values(5,'Ropeburn','Audry','aropeburn',1550);
+ERROR 1406 (22001): Data too long for column 'USERID' at row 1
+mysql> insert into MY_EMPLOYEE values(5,'Ropeburn','Audry','aropeburn',1550);
+ERROR 1406 (22001): Data too long for column 'USERID' at row 1
+mysql> drop table MY_EMPLOYEE;
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> show tables;
++----------------+
+| Tables_in_pubs |
++----------------+
+| authors        |
+| department     |
+| departments    |
+| employee       |
+| employees      |
+| publishers     |
+| salgrades      |
+| salgrades1     |
+| titleauthor    |
+| titles         |
++----------------+
+10 rows in set (0.01 sec)
+
+mysql> -- Lab7bles
+mysql> -- Lab7
+mysql> CREATE TABLE MY_EMPLOYEE
+    ->      ( 
+    ->       ID INT(4) PRIMARY KEY AUTO_INCREMENT,
+    ->      LAST_NAME VARCHAR(25),
+    ->     FIRST_NAME VARCHAR(25),
+    ->      USERID VARCHAR(8),
+    ->     SALARY FLOAT (9,2)
+    ->     );
+Query OK, 0 rows affected, 2 warnings (0.06 sec)
+
+mysql> show tables;
++----------------+
+| Tables_in_pubs |
++----------------+
+| authors        |
+| department     |
+| departments    |
+| employee       |
+| employees      |
+| my_employee    |
+| publishers     |
+| salgrades      |
+| salgrades1     |
+| titleauthor    |
+| titles         |
++----------------+
+11 rows in set (0.00 sec)
+
+mysql> -- 2
+mysql> DESC my_employee;
++------------+-------------+------+-----+---------+----------------+
+| Field      | Type        | Null | Key | Default | Extra          |
++------------+-------------+------+-----+---------+----------------+
+| ID         | int         | NO   | PRI | NULL    | auto_increment |
+| LAST_NAME  | varchar(25) | YES  |     | NULL    |                |
+| FIRST_NAME | varchar(25) | YES  |     | NULL    |                |
+| USERID     | varchar(8)  | YES  |     | NULL    |                |
+| SALARY     | float(9,2)  | YES  |     | NULL    |                |
++------------+-------------+------+-----+---------+----------------+
+5 rows in set (0.00 sec)
+
+mysql> -- 3,4
+mysql> insert into my_employee values(1,'Patel','Ralph','rpatel',795);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into my_employee values(2,'Dancs','Betty','bdancs',860);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into my_employee values(3,'Biri','Ben','bbiri',1100);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into my_employee values(4,'Newman','Chad','cnewman',750);
+Query OK, 1 row affected (0.03 sec)
+
+-- 6
+mysql> \. F:\Module2-Mysql\30August2022\loadme.sql
+Query OK, 1 row affected (0.00 sec)
+
+mysql> SELECT* FROM MY_EMPLOYEE;
++----+-----------+------------+----------+---------+
+| ID | LAST_NAME | FIRST_NAME | USERID   | SALARY  |
++----+-----------+------------+----------+---------+
+|  1 | Patel     | Ralph      | rpatel   |  795.00 |
+|  2 | Dancs     | Betty      | bdancs   |  860.00 |
+|  3 | Biri      | Ben        | bbiri    | 1100.00 |
+|  4 | Newman    | Chad       | cnewman  |  750.00 |
+|  5 | Ropeburn  | Audry      | aropeburn|  750.00 |
++----+-----------+------------+---------+----------+
+
+mysql> SET autocommit = 0;
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> START TRANSACTION ;
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> UPDATE MY_EMPLOYEE SET FIRST_NAME='DEXTER' WHERE ID=3;
+Query OK, 1 row affected (0.04 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> UPDATE MY_EMPLOYEE SET SALARY=1000 WHERE SALARY<900;
+Query OK, 3 rows affected (0.04 sec)
+Rows matched: 3  Changed: 3  Warnings: 0
+
+mysql> SELECT * FROM MY_EMPLOYEE;
++----+-----------+------------+----------+---------+
+| ID | LAST_NAME | FIRST_NAME | USERID   | SALARY  |
++----+-----------+------------+----------+---------+
+|  1 | Patel     | Ralph      | rpatel   |  795.00 |
+|  2 | Dancs     | Betty      | bdancs   |  860.00 |
+|  3 | Biri      | Ben        | bbiri    | 1100.00 |
+|  4 | Newman    | Chad       | cnewman  |  750.00 |
+|  5 | Ropeburn  | Audry      | aropeburn|  750.00 |
++----+-----------+------------+---------+----------+
+
+mysql> COMMIT;
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> \. F:\Module2-Mysql\30August2022\loadme.sql
+ERROR 1062 (23000): Duplicate entry '5' for key 'PRIMARY'
+Query OK, 1 row affected (0.00 sec)
+
+mysql> SELECT * FROM MY_EMPLOYEE;
++----+-----------+------------+----------+---------+
+| ID | LAST_NAME | FIRST_NAME | USERID   | SALARY  |
++----+-----------+------------+----------+---------+
+|  1 | Patel     | Ralph      | rpatel   |  795.00 |
+|  2 | Dancs     | Betty      | bdancs   |  860.00 |
+|  3 | Biri      | Ben        | bbiri    | 1100.00 |
+|  4 | Newman    | Chad       | cnewman  |  750.00 |
+|  5 | Ropeburn  | Audry      | aropeburn|  750.00 |
+|  6 | Bhakti    | Thombare   | bhaktit  | 1050.00 |
++----+-----------+------------+---------+----------+
+
+mysql> SAVEPOINT MYSAVPOINT1;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> DELETE FROM MY_EMPLOYEE;
+Query OK, 4 rows affected (0.04 sec)
+
+mysql> ROLLBACK TO SAVEPOINT MYSAVPOINT1;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> SELECT * FROM MY_EMPLOYEE;
++----+-----------+------------+----------+---------+
+| ID | LAST_NAME | FIRST_NAME | USERID   | SALARY  |
++----+-----------+------------+----------+---------+
+|  1 | Patel     | Ralph      | rpatel   |  795.00 |
+|  2 | Dancs     | Betty      | bdancs   |  860.00 |
+|  3 | Biri      | Ben        | bbiri    | 1100.00 |
+|  4 | Newman    | Chad       | cnewman  |  750.00 |
+|  5 | Ropeburn  | Audry      | aropeburn|  750.00 |
+|  6 | Bhakti    | Thombare   | bhaktit  | 1050.00 |
++----+-----------+------------+---------+----------+
+
+mysql> select * from MY_EMPLOYEE  WHERE ID=6;
++----+-----------+------------+----------+---------+
+| ID | LAST_NAME | FIRST_NAME | USERID   | SALARY  |
++----+-----------+------------+----------+---------+
+|  6 | Bhakti    | Thombare   | bhaktit  | 1050.00 |
++----+-----------+------------+---------+----------+

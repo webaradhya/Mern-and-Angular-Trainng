@@ -1,0 +1,266 @@
+mysql> USE pubs;
+Database changed
+mysql> SHOW TABLES;
++----------------+
+| Tables_in_pubs |
++----------------+
+| authors        |
+| department     |
+| departments    |
+| employees      |
+| my_employee    |
+| publishers     |
+| salgrades      |
+| salgrades1     |
+| titleauthor    |
+| titles         |
++----------------+
+11 rows in set (0.02 sec)
+
+mysql> -- 1
+
+mysql> CREATE TABLE EMPLOYEE(EMP_ID INT(4) PRIMARY KEY AUTO_INCREMENT,NAME VARCHAR(25),LAST_NAME VARCHAR(25),BASIC_SAL FLOAT(9,2));
+Query OK, 0 rows affected, 2 warnings (0.09 sec)
+
+mysql> -- 2
+mysql> DESC EMPLOYEE;
++-----------+-------------+------+-----+---------+----------------+
+| Field     | Type        | Null | Key | Default | Extra          |
++-----------+-------------+------+-----+---------+----------------+
+| EMP_ID    | int         | NO   | PRI | NULL    | auto_increment |
+| NAME      | varchar(25) | YES  |     | NULL    |                |
+| LAST_NAME | varchar(25) | YES  |     | NULL    |                |
+| BASIC_SAL | float(9,2)  | YES  |     | NULL    |                |
++-----------+-------------+------+-----+---------+----------------+
+4 rows in set (0.04 sec)
+
+mysql> INSERT INTO EMPLOYEE VALUES(1,'Patel','Ralph',795);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> INSERT INTO EMPLOYEE VALUES(2,'Dancs','Betty',860);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> INSERT INTO EMPLOYEE VALUES(3,'Biri','Ben',1100);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO EMPLOYEE VALUES(4,'Newman','Chad',750);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO EMPLOYEE VALUES(5,'Ropeburn','Audry',1550);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> SELECT * FROM EMPLOYEE;
++--------+----------+-----------+-----------+
+| EMP_ID | NAME     | LAST_NAME | BASIC_SAL |
++--------+----------+-----------+-----------+
+|      1 | Patel    | Ralph     |    795.00 |
+|      2 | Dancs    | Betty     |    860.00 |
+|      3 | Biri     | Ben       |   1100.00 |
+|      4 | Newman   | Chad      |    750.00 |
+|      5 | Ropeburn | Audry     |   1550.00 |
++--------+----------+-----------+-----------+
+5 rows in set (0.00 sec)
+
+mysql> -- 3
+mysql> desc employee;
++-----------+-------------+------+-----+---------+----------------+
+| Field     | Type        | Null | Key | Default | Extra          |
++-----------+-------------+------+-----+---------+----------------+
+| EMP_ID    | int         | NO   | PRI | NULL    | auto_increment |
+| NAME      | varchar(25) | YES  |     | NULL    |                |
+| LAST_NAME | varchar(25) | YES  |     | NULL    |                |
+| BASIC_SAL | float(9,2)  | YES  |     | NULL    |                |
++-----------+-------------+------+-----+---------+----------------+
+4 rows in set (0.00 sec)
+
+mysql> ALTER TABLE employee MODIFY NAME varchar(5);
+mysql> desc employee;
++-----------+-------------+------+-----+---------+----------------+
+| Field     | Type        | Null | Key | Default | Extra          |
++-----------+-------------+------+-----+---------+----------------+
+| EMP_ID    | int         | NO   | PRI | NULL    | auto_increment |
+| NAME      | varchar(5) | YES  |     | NULL    |                |
+| LAST_NAME | varchar(25) | YES  |     | NULL    |                |
+| BASIC_SAL | float(9,2)  | YES  |     | NULL    |                |
++-----------+-------------+------+-----+---------+----------------+
+4 rows in set (0.00 sec)
+
+
+mysql> -- 4
+mysql> select * from EMPLOYEE;
++--------+----------+-----------+-----------+
+| EMP_ID | NAME     | LAST_NAME | BASIC_SAL |
++--------+----------+-----------+-----------+
+|      1 | Patel    | Ralph     |    795.00 |
+|      2 | Dancs    | Betty     |    860.00 |
+|      3 | Biri     | Ben       |   1100.00 |
+|      4 | Newman   | Chad      |    750.00 |
+|      5 | Ropeburn | Audry     |   1550.00 |
++--------+----------+-----------+-----------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT * FROM EMPLOYEE WHERE mod(EMP_ID,2) = 0;
++--------+--------+-----------+-----------+
+| EMP_ID | NAME   | LAST_NAME | BASIC_SAL |
++--------+--------+-----------+-----------+
+|      2 | Dancs  | Betty     |    860.00 |
+|      4 | Newman | Chad      |    750.00 |
++--------+--------+-----------+-----------+
+2 rows in set (0.00 sec)
+
+mysql> -- 5,6
+mysql> ALTER TABLE EMPLOYEE ADD SALARY BIGINT  NOT NULL;
+Query OK, 0 rows affected (0.08 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from EMPLOYEE;
++--------+----------+-----------+-----------+--------+
+| EMP_ID | NAME     | LAST_NAME | BASIC_SAL | SALARY |
++--------+----------+-----------+-----------+--------+
+|      1 | Patel    | Ralph     |    795.00 |      0 |
+|      2 | Dancs    | Betty     |    860.00 |      0 |
+|      3 | Biri     | Ben       |   1100.00 |      0 |
+|      4 | Newman   | Chad      |    750.00 |      0 |
+|      5 | Ropeburn | Audry     |   1550.00 |      0 |
++--------+----------+-----------+-----------+--------+
+5 rows in set (0.00 sec)
+
+mysql> -- 7
+mysql> ALTER TABLE EMPLOYEE ADD BASIC_SALARY BIGINT;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE EMPLOYEE DROP COLUMN BASIC_SALARY;
+Query OK, 0 rows affected (0.06 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM EMPLOYEE;
++--------+----------+-----------+-----------+--------+
+| EMP_ID | NAME     | LAST_NAME | BASIC_SAL | SALARY |
++--------+----------+-----------+-----------+--------+
+|      1 | Patel    | Ralph     |    795.00 |      0 |
+|      2 | Dancs    | Betty     |    860.00 |      0 |
+|      3 | Biri     | Ben       |   1100.00 |      0 |
+|      4 | Newman   | Chad      |    750.00 |      0 |
+|      5 | Ropeburn | Audry     |   1550.00 |      0 |
++--------+----------+-----------+-----------+--------+
+5 rows in set (0.00 sec)
+
+mysql> ALTER TABLE EMPLOYEE ADD BASIC_SALARY BIGINT;
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from EMPLOYEE;
++--------+----------+-----------+-----------+--------+--------------+
+| EMP_ID | NAME     | LAST_NAME | BASIC_SAL | SALARY | BASIC_SALARY |
++--------+----------+-----------+-----------+--------+--------------+
+|      1 | Patel    | Ralph     |    795.00 |      0 |         NULL |
+|      2 | Dancs    | Betty     |    860.00 |      0 |         NULL |
+|      3 | Biri     | Ben       |   1100.00 |      0 |         NULL |
+|      4 | Newman   | Chad      |    750.00 |      0 |         NULL |
+|      5 | Ropeburn | Audry     |   1550.00 |      0 |         NULL |
++--------+----------+-----------+-----------+--------+--------------+
+5 rows in set (0.00 sec)
+
+mysql> ALTER TABLE EMPLOYEE DROP COLUMN BASIC_SALARY;
+Query OK, 0 rows affected (0.07 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM EMPLOYEE;
++--------+----------+-----------+-----------+--------+
+| EMP_ID | NAME     | LAST_NAME | BASIC_SAL | SALARY |
++--------+----------+-----------+-----------+--------+
+|      1 | Patel    | Ralph     |    795.00 |      0 |
+|      2 | Dancs    | Betty     |    860.00 |      0 |
+|      3 | Biri     | Ben       |   1100.00 |      0 |
+|      4 | Newman   | Chad      |    750.00 |      0 |
+|      5 | Ropeburn | Audry     |   1550.00 |      0 |
++--------+----------+-----------+-----------+--------+
+5 rows in set (0.00 sec)
+
+mysql> -- 8
+mysql> Alter table EMPLOYEE ADD COLUMN EMAIL_ID varchar(20) NOT NULL;
+Query OK, 0 rows affected (0.07 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from employee;
++--------+----------+-----------+-----------+--------+----------+
+| EMP_ID | NAME     | LAST_NAME | BASIC_SAL | SALARY | EMAIL_ID |
++--------+----------+-----------+-----------+--------+----------+
+|      1 | Patel    | Ralph     |    795.00 |      0 |          |
+|      2 | Dancs    | Betty     |    860.00 |      0 |          |
+|      3 | Biri     | Ben       |   1100.00 |      0 |          |
+|      4 | Newman   | Chad      |    750.00 |      0 |          |
+|      5 | Ropeburn | Audry     |   1550.00 |      0 |          |
++--------+----------+-----------+-----------+--------+----------+
+5 rows in set (0.00 sec)
+
+mysql> -- 9
+mysql> insert into EMPLOYEE values(6,'Tom','Cruise',5000.00);
+ERROR 1136 (21S01): Column count doesn't match value count at row 1 ---->we have not enter email id so it is giving error
+
+mysql> -- 10
+mysql> alter table EMPLOYEE DROP COLUMN EMAIL_ID;
+Query OK, 0 rows affected (0.07 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from EMPLOYEE;
++--------+----------+-----------+-----------+--------+
+| EMP_ID | NAME     | LAST_NAME | BASIC_SAL | SALARY |
++--------+----------+-----------+-----------+--------+
+|      1 | Patel    | Ralph     |    795.00 |      0 |
+|      2 | Dancs    | Betty     |    860.00 |      0 |
+|      3 | Biri     | Ben       |   1100.00 |      0 |
+|      4 | Newman   | Chad      |    750.00 |      0 |
+|      5 | Ropeburn | Audry     |   1550.00 |      0 |
++--------+----------+-----------+-----------+--------+
+5 rows in set (0.00 sec)
+
+mysql> -- 11
+mysql> RENAME TABLE EMPLOYEE TO MY_EMP02;
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> show tables;
++----------------+
+| Tables_in_pubs |
++----------------+
+| authors        |
+| department     |
+| departments    |
+| employees      |
+| my_emp02       |
+| my_employee    |
+| publishers     |
+| salgrades      |
+| salgrades1     |
+| titleauthor    |
+| titles         |
++----------------+
+11 rows in set (0.00 sec)
+
+mysql> -- 12
+mysql> DROP table MY_EMP02;
+Query OK, 0 rows affected (0.05 sec)
+
+
+mysql> DROP table if exists MY_EMP02;
+Query OK, 0 rows affected, 1 warning (0.01 sec)
+
+mysql> show tables;
++----------------+
+| Tables_in_pubs |
++----------------+
+| authors        |
+| department     |
+| departments    |
+| employees      |
+| my_employee    |
+| publishers     |
+| salgrades      |
+| salgrades1     |
+| titleauthor    |
+| titles         |
++----------------+
+10 rows in set (0.00 sec)
+
+mysql> \t

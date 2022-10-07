@@ -1,0 +1,793 @@
+mysql> use pubs;
+Database changed
+
+mysql> select titles.title,publishers.pub_name from titles,publishers where titles.pub_id = publishers.pub_id;
++-----------------------------------------------------------------+----------------------+
+| title                                                           | pub_name             |
++-----------------------------------------------------------------+----------------------+
+| The Busy Executive's Database Guide                             | Algodata Infosystems |
+| Cooking with Computers: Surreptitious Balance Sheets            | Algodata Infosystems |
+| You Can Combat Computer Stress!                                 | New Moon Books       |
+| Straight Talk About Computers                                   | Algodata Infosystems |
+| Silicon Valley Gastronomic Treats                               | Binnet & Hardley     |
+| The Gourmet Microwave                                           | Binnet & Hardley     |
+| The Psychology of Computer Cooking                              | Binnet & Hardley     |
+| But Is It User Friendly?                                        | Algodata Infosystems |
+| Secrets of Silicon Valley                                       | Algodata Infosystems |
+| Net Etiquette                                                   | Algodata Infosystems |
+| Computer Phobic AND Non-Phobic Individuals: Behavior Variations | Binnet & Hardley     |
+| Is Anger the Enemy?                                             | New Moon Books       |
+| Life Without Fear                                               | New Moon Books       |
+| Prolonged Data Deprivation: Four Case Studies                   | New Moon Books       |
+| Emotional Security: A New Algorithm                             | New Moon Books       |
+| Onions, Leeks, and Garlic: Cooking Secrets of the Mediterranean | Binnet & Hardley     |
+| Fifty Years in Buckingham Palace Kitchens                       | Binnet & Hardley     |
+| Sushi, Anyone?                                                  | Binnet & Hardley     |
++-----------------------------------------------------------------+----------------------+
+18 rows in set (0.00 sec)
+
+mysql> select titles.ytd_sales,publishers.pub_name from titles,publishers where titles.pub_id = publishers.pub_id;
++-----------+----------------------+
+| ytd_sales | pub_name             |
++-----------+----------------------+
+|      4095 | Algodata Infosystems |
+|      3876 | Algodata Infosystems |
+|     18722 | New Moon Books       |
+|      4095 | Algodata Infosystems |
+|      2032 | Binnet & Hardley     |
+|     22246 | Binnet & Hardley     |
+|      NULL | Binnet & Hardley     |
+|      8780 | Algodata Infosystems |
+|      4095 | Algodata Infosystems |
+|      NULL | Algodata Infosystems |
+|       375 | Binnet & Hardley     |
+|      2045 | New Moon Books       |
+|       111 | New Moon Books       |
+|      4072 | New Moon Books       |
+|      3336 | New Moon Books       |
+|       375 | Binnet & Hardley     |
+|     15096 | Binnet & Hardley     |
+|      4095 | Binnet & Hardley     |
++-----------+----------------------+
+18 rows in set (0.00 sec)
+
+mysql> select publishers.pub_name,authors.au_lname from publishers,authors where publishers.city = authors.city;
++----------------------+----------+
+| pub_name             | au_lname |
++----------------------+----------+
+| Algodata Infosystems | Carson   |
+| Algodata Infosystems | Bennet   |
++----------------------+----------+
+2 rows in set (0.01 sec)
+
+mysql>  select publishers.pub_name,authors.au_lname from publishers,authors;
++-----------------------+----------------+
+| pub_name              | au_lname       |
++-----------------------+----------------+
+| Lucerene Publishing   | White          |
+| Scootney Books        | White          |
+| GGG&G                 | White          |
+| Ramona Publishers     | White          |
+| Five lakes Publishing | White          |
+| Algodata Infosystems  | White          |
+| Binnet & Hardley      | White          |
+| New Moon Books        | White          |
+| Lucerene Publishing   | Green          |
+| Scootney Books        | Green          |
+| GGG&G                 | Green          |
+| Ramona Publishers     | Green          |
+| Five lakes Publishing | Green          |
+| Algodata Infosystems  | Green          |
+| Binnet & Hardley      | Green          |
+| New Moon Books        | Green          |
+| Lucerene Publishing   | Carson         |
+| Scootney Books        | Carson         |
+| GGG&G                 | Carson         |
+| Ramona Publishers     | Carson         |
+| Five lakes Publishing | Carson         |
+| Algodata Infosystems  | Carson         |
+| Binnet & Hardley      | Carson         |
+| New Moon Books        | Carson         |
+| Lucerene Publishing   | O'Leary        |
+| Scootney Books        | O'Leary        |
+| GGG&G                 | O'Leary        |
+| Ramona Publishers     | O'Leary        |
+| Five lakes Publishing | O'Leary        |
+| Algodata Infosystems  | O'Leary        |
+| Binnet & Hardley      | O'Leary        |
+| New Moon Books        | O'Leary        |
+| Lucerene Publishing   | Straight       |
+| Scootney Books        | Straight       |
+| GGG&G                 | Straight       |
+| Ramona Publishers     | Straight       |
+| Five lakes Publishing | Straight       |
+| Algodata Infosystems  | Straight       |
+| Binnet & Hardley      | Straight       |
+| New Moon Books        | Straight       |
+| Lucerene Publishing   | Smith          |
+| Scootney Books        | Smith          |
+| GGG&G                 | Smith          |
+| Ramona Publishers     | Smith          |
+| Five lakes Publishing | Smith          |
+| Algodata Infosystems  | Smith          |
+| Binnet & Hardley      | Smith          |
+| New Moon Books        | Smith          |
+| Lucerene Publishing   | Bennet         |
+| Scootney Books        | Bennet         |
+| GGG&G                 | Bennet         |
+| Ramona Publishers     | Bennet         |
+| Five lakes Publishing | Bennet         |
+| Algodata Infosystems  | Bennet         |
+| Binnet & Hardley      | Bennet         |
+| New Moon Books        | Bennet         |
+| Lucerene Publishing   | Dull           |
+| Scootney Books        | Dull           |
+| GGG&G                 | Dull           |
+| Ramona Publishers     | Dull           |
+| Five lakes Publishing | Dull           |
+| Algodata Infosystems  | Dull           |
+| Binnet & Hardley      | Dull           |
+| New Moon Books        | Dull           |
+| Lucerene Publishing   | Gringlesby     |
+| Scootney Books        | Gringlesby     |
+| GGG&G                 | Gringlesby     |
+| Ramona Publishers     | Gringlesby     |
+| Five lakes Publishing | Gringlesby     |
+| Algodata Infosystems  | Gringlesby     |
+| Binnet & Hardley      | Gringlesby     |
+| New Moon Books        | Gringlesby     |
+| Lucerene Publishing   | Locksley       |
+| Scootney Books        | Locksley       |
+| GGG&G                 | Locksley       |
+| Ramona Publishers     | Locksley       |
+| Five lakes Publishing | Locksley       |
+| Algodata Infosystems  | Locksley       |
+| Binnet & Hardley      | Locksley       |
+| New Moon Books        | Locksley       |
+| Lucerene Publishing   | Greene         |
+| Scootney Books        | Greene         |
+| GGG&G                 | Greene         |
+| Ramona Publishers     | Greene         |
+| Five lakes Publishing | Greene         |
+| Algodata Infosystems  | Greene         |
+| Binnet & Hardley      | Greene         |
+| New Moon Books        | Greene         |
+| Lucerene Publishing   | Blotchet-Halls |
+| Scootney Books        | Blotchet-Halls |
+| GGG&G                 | Blotchet-Halls |
+| Ramona Publishers     | Blotchet-Halls |
+| Five lakes Publishing | Blotchet-Halls |
+| Algodata Infosystems  | Blotchet-Halls |
+| Binnet & Hardley      | Blotchet-Halls |
+| New Moon Books        | Blotchet-Halls |
+| Lucerene Publishing   | Yokomoto       |
+| Scootney Books        | Yokomoto       |
+| GGG&G                 | Yokomoto       |
+| Ramona Publishers     | Yokomoto       |
+| Five lakes Publishing | Yokomoto       |
+| Algodata Infosystems  | Yokomoto       |
+| Binnet & Hardley      | Yokomoto       |
+| New Moon Books        | Yokomoto       |
+| Lucerene Publishing   | del Castillo   |
+| Scootney Books        | del Castillo   |
+| GGG&G                 | del Castillo   |
+| Ramona Publishers     | del Castillo   |
+| Five lakes Publishing | del Castillo   |
+| Algodata Infosystems  | del Castillo   |
+| Binnet & Hardley      | del Castillo   |
+| New Moon Books        | del Castillo   |
+| Lucerene Publishing   | DeFrance       |
+| Scootney Books        | DeFrance       |
+| GGG&G                 | DeFrance       |
+| Ramona Publishers     | DeFrance       |
+| Five lakes Publishing | DeFrance       |
+| Algodata Infosystems  | DeFrance       |
+| Binnet & Hardley      | DeFrance       |
+| New Moon Books        | DeFrance       |
+| Lucerene Publishing   | Stringer       |
+| Scootney Books        | Stringer       |
+| GGG&G                 | Stringer       |
+| Ramona Publishers     | Stringer       |
+| Five lakes Publishing | Stringer       |
+| Algodata Infosystems  | Stringer       |
+| Binnet & Hardley      | Stringer       |
+| New Moon Books        | Stringer       |
+| Lucerene Publishing   | MacFeather     |
+| Scootney Books        | MacFeather     |
+| GGG&G                 | MacFeather     |
+| Ramona Publishers     | MacFeather     |
+| Five lakes Publishing | MacFeather     |
+| Algodata Infosystems  | MacFeather     |
+| Binnet & Hardley      | MacFeather     |
+| New Moon Books        | MacFeather     |
+| Lucerene Publishing   | Karsen         |
+| Scootney Books        | Karsen         |
+| GGG&G                 | Karsen         |
+| Ramona Publishers     | Karsen         |
+| Five lakes Publishing | Karsen         |
+| Algodata Infosystems  | Karsen         |
+| Binnet & Hardley      | Karsen         |
+| New Moon Books        | Karsen         |
+| Lucerene Publishing   | Panteley       |
+| Scootney Books        | Panteley       |
+| GGG&G                 | Panteley       |
+| Ramona Publishers     | Panteley       |
+| Five lakes Publishing | Panteley       |
+| Algodata Infosystems  | Panteley       |
+| Binnet & Hardley      | Panteley       |
+| New Moon Books        | Panteley       |
+| Lucerene Publishing   | Hunter         |
+| Scootney Books        | Hunter         |
+| GGG&G                 | Hunter         |
+| Ramona Publishers     | Hunter         |
+| Five lakes Publishing | Hunter         |
+| Algodata Infosystems  | Hunter         |
+| Binnet & Hardley      | Hunter         |
+| New Moon Books        | Hunter         |
+| Lucerene Publishing   | McBadden       |
+| Scootney Books        | McBadden       |
+| GGG&G                 | McBadden       |
+| Ramona Publishers     | McBadden       |
+| Five lakes Publishing | McBadden       |
+| Algodata Infosystems  | McBadden       |
+| Binnet & Hardley      | McBadden       |
+| New Moon Books        | McBadden       |
+| Lucerene Publishing   | Ringer         |
+| Scootney Books        | Ringer         |
+| GGG&G                 | Ringer         |
+| Ramona Publishers     | Ringer         |
+| Five lakes Publishing | Ringer         |
+| Algodata Infosystems  | Ringer         |
+| Binnet & Hardley      | Ringer         |
+| New Moon Books        | Ringer         |
+| Lucerene Publishing   | Ringer         |
+| Scootney Books        | Ringer         |
+| GGG&G                 | Ringer         |
+| Ramona Publishers     | Ringer         |
+| Five lakes Publishing | Ringer         |
+| Algodata Infosystems  | Ringer         |
+| Binnet & Hardley      | Ringer         |
+| New Moon Books        | Ringer         |
++-----------------------+----------------+
+184 rows in set (0.00 sec)
+
+mysql> select publishers.pub_id,publishers.pub_name,titles.type from publishers,titles where titles.type="Business";
++--------+-----------------------+----------+
+| pub_id | pub_name              | type     |
++--------+-----------------------+----------+
+| 0736   | New Moon Books        | business |
+| 0736   | New Moon Books        | business |
+| 0736   | New Moon Books        | business |
+| 0736   | New Moon Books        | business |
+| 0877   | Binnet & Hardley      | business |
+| 0877   | Binnet & Hardley      | business |
+| 0877   | Binnet & Hardley      | business |
+| 0877   | Binnet & Hardley      | business |
+| 1389   | Algodata Infosystems  | business |
+| 1389   | Algodata Infosystems  | business |
+| 1389   | Algodata Infosystems  | business |
+| 1389   | Algodata Infosystems  | business |
+| 1622   | Five lakes Publishing | business |
+| 1622   | Five lakes Publishing | business |
+| 1622   | Five lakes Publishing | business |
+| 1622   | Five lakes Publishing | business |
+| 1756   | Ramona Publishers     | business |
+| 1756   | Ramona Publishers     | business |
+| 1756   | Ramona Publishers     | business |
+| 1756   | Ramona Publishers     | business |
+| 9901   | GGG&G                 | business |
+| 9901   | GGG&G                 | business |
+| 9901   | GGG&G                 | business |
+| 9901   | GGG&G                 | business |
+| 9952   | Scootney Books        | business |
+| 9952   | Scootney Books        | business |
+| 9952   | Scootney Books        | business |
+| 9952   | Scootney Books        | business |
+| 9999   | Lucerene Publishing   | business |
+| 9999   | Lucerene Publishing   | business |
+| 9999   | Lucerene Publishing   | business |
+| 9999   | Lucerene Publishing   | business |
++--------+-----------------------+----------+
+32 rows in set (0.01 sec)
+
+mysql> select distinct publishers.pub_id,publishers.pub_name,titles.type from publishers,titles where titles.type="Business";
++--------+-----------------------+----------+
+| pub_id | pub_name              | type     |
++--------+-----------------------+----------+
+| 0736   | New Moon Books        | business |
+| 0877   | Binnet & Hardley      | business |
+| 1389   | Algodata Infosystems  | business |
+| 1622   | Five lakes Publishing | business |
+| 1756   | Ramona Publishers     | business |
+| 9901   | GGG&G                 | business |
+| 9952   | Scootney Books        | business |
+| 9999   | Lucerene Publishing   | business |
++--------+-----------------------+----------+
+8 rows in set (0.01 sec)
+
+
+mysql> select authors.au_fname,titles.title from titleauthor left join authors on authors.au_id=titleauthor.au_id left join titles on titles.title_id=titleauthor.title_id;
++----------+-----------------------------------------------------------------+
+| au_fname | title                                                           |
++----------+-----------------------------------------------------------------+
+| Marjorie | The Busy Executive's Database Guide                             |
+| Abraham  | The Busy Executive's Database Guide                             |
+| Michael  | Cooking with Computers: Surreptitious Balance Sheets            |
+| Stearns  | Cooking with Computers: Surreptitious Balance Sheets            |
+| Marjorie | You Can Combat Computer Stress!                                 |
+| Dean     | Straight Talk About Computers                                   |
+| Innes    | Silicon Valley Gastronomic Treats                               |
+| Michel   | The Gourmet Microwave                                           |
+| Anne     | The Gourmet Microwave                                           |
+| Cheryl   | But Is It User Friendly?                                        |
+| Ann      | Secrets of Silicon Valley                                       |
+| Sheryl   | Secrets of Silicon Valley                                       |
+| Charlene | Net Etiquette                                                   |
+| Stearns  | Computer Phobic AND Non-Phobic Individuals: Behavior Variations |
+| Livia    | Computer Phobic AND Non-Phobic Individuals: Behavior Variations |
+| Anne     | Is Anger the Enemy?                                             |
+| Albert   | Is Anger the Enemy?                                             |
+| Albert   | Life Without Fear                                               |
+| Johnson  | Prolonged Data Deprivation: Four Case Studies                   |
+| Charlene | Emotional Security: A New Algorithm                             |
+| Sylvia   | Onions, Leeks, and Garlic: Cooking Secrets of the Mediterranean |
+| Reginald | Fifty Years in Buckingham Palace Kitchens                       |
+| Michael  | Sushi, Anyone?                                                  |
+| Burt     | Sushi, Anyone?                                                  |
+| Akiko    | Sushi, Anyone?                                                  |
++----------+-----------------------------------------------------------------+
+25 rows in set (0.00 sec)
+
+mysql> create table employee(
+    -> emp_id int not null primary key,
+    -> ename varchar(20) not null,
+    -> dept_id int not null,
+    -> job varchar(20) not null,
+    -> mgr_id int null,
+    -> bsal int not null);
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> desc employee;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| emp_id  | int         | NO   | PRI | NULL    |       |
+| ename   | varchar(20) | NO   |     | NULL    |       |
+| dept_id | int         | NO   |     | NULL    |       |
+| job     | varchar(20) | NO   |     | NULL    |       |
+| mgr_id  | int         | YES  |     | NULL    |       |
+| bsal    | int         | NO   |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+6 rows in set (0.03 sec)
+
+mysql> create table departments(
+    -> dept_id int not null primary key,
+    -> dname varchar(20) not null,
+    -> location varchar(20) not null);
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> desc departments;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| dept_id  | int         | NO   | PRI | NULL    |       |
+| dname    | varchar(20) | NO   |     | NULL    |       |
+| location | varchar(20) | NO   |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> create table salgrades(
+    -> grade char not null,
+    -> min_sal int not null,
+    -> max_sal int not null,
+    -> primary key(grade));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc salgrades;
++---------+---------+------+-----+---------+-------+
+| Field   | Type    | Null | Key | Default | Extra |
++---------+---------+------+-----+---------+-------+
+| grade   | char(1) | NO   | PRI | NULL    |       |
+| min_sal | int     | NO   |     | NULL    |       |
+| max_sal | int     | NO   |     | NULL    |       |
++---------+---------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> insert into employee(emp_id,ename,dept_id,job,bsal) values
+    -> (101,'Sameer',10,'President',500000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert employee values(102,'Srinivas',10,'VP',101,400000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert employee values(103,'Nanda',20,'VP',101,400000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert employee values(104,'Ram',30,'DGM',102,35000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert employee values(105,'Vivek',20,'PM',103,300000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert employee values(106,'Venkat',20,'Tech Lead',105,25000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from employee;
++--------+----------+---------+-----------+--------+--------+
+| emp_id | ename    | dept_id | job       | mgr_id | bsal   |
++--------+----------+---------+-----------+--------+--------+
+|    101 | Sameer   |      10 | President |   NULL | 500000 |
+|    102 | Srinivas |      10 | VP        |    101 | 400000 |
+|    103 | Nanda    |      20 | VP        |    101 | 400000 |
+|    104 | Ram      |      30 | DGM       |    102 |  35000 |
+|    105 | Vivek    |      20 | PM        |    103 | 300000 |
+|    106 | Venkat   |      20 | Tech Lead |    105 |  25000 |
++--------+----------+---------+-----------+--------+--------+
+6 rows in set (0.00 sec)
+
+mysql> insert departments values(10,'Crop','Dallas');
+Query OK, 1 row affected (0.01 sec)
+
+mysql>  insert departments values(20,'PW','Bangalore');
+Query OK, 1 row affected (0.01 sec)
+
+mysql>  insert departments values(30,'SP','Pune');
+Query OK, 1 row affected (0.01 sec)
+
+mysql>  insert departments values(40,'MS','Hyderabad');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from departments;
++---------+-------+-----------+
+| dept_id | dname | location  |
++---------+-------+-----------+
+|      10 | Crop  | Dallas    |
+|      20 | PW    | Bangalore |
+|      30 | SP    | Pune      |
+|      40 | MS    | Hyderabad |
++---------+-------+-----------+
+4 rows in set (0.00 sec)
+
+mysql> insert salgrades values('A',40001,500000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert salgrades values('B',30001,400000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert salgrades values('C',20001,300000);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from salgrades;
++-------+---------+---------+
+| grade | min_sal | max_sal |
++-------+---------+---------+
+| A     |   40001 |  500000 |
+| B     |   30001 |  400000 |
+| C     |   20001 |  300000 |
++-------+---------+---------+
+3 rows in set (0.00 sec)
+
+mysql> select e.ename,e.dept_id,d.dname from employee as e,departments as d 
+    -> where e.dept_id = d.dept_id;
++----------+---------+-------+
+| ename    | dept_id | dname |
++----------+---------+-------+
+| Sameer   |      10 | Crop  |
+| Srinivas |      10 | Crop  |
+| Nanda    |      20 | PW    |
+| Ram      |      30 | SP    |
+| Vivek    |      20 | PW    |
+| Venkat   |      20 | PW    |
++----------+---------+-------+
+6 rows in set (0.00 sec)
+
+mysql> select e.job,d.location from employee as e,departments as d where d.dept_id=30;
++-----------+----------+
+| job       | location |
++-----------+----------+
+| President | Pune     |
+| VP        | Pune     |
+| VP        | Pune     |
+| DGM       | Pune     |
+| PM        | Pune     |
+| Tech Lead | Pune     |
++-----------+----------+
+6 rows in set (0.00 sec)
+
+mysql> select e.job,d.location from employee as e inner join departments as d on d.dept_id=30;
++-----------+----------+
+| job       | location |
++-----------+----------+
+| President | Pune     |
+| VP        | Pune     |
+| VP        | Pune     |
+| DGM       | Pune     |
+| PM        | Pune     |
+| Tech Lead | Pune     |
++-----------+----------+
+6 rows in set (0.00 sec)
+
+mysql> select e.job,d.location from employee as e left join departments as d on d.dept_id=30;
++-----------+----------+
+| job       | location |
++-----------+----------+
+| President | Pune     |
+| VP        | Pune     |
+| VP        | Pune     |
+| DGM       | Pune     |
+| PM        | Pune     |
+| Tech Lead | Pune     |
++-----------+----------+
+6 rows in set (0.01 sec)
+
+mysql> select e.job,d.location from employee as e right join departments as d on d.dept_id=30;
++-----------+-----------+
+| job       | location  |
++-----------+-----------+
+| NULL      | Dallas    |
+| NULL      | Bangalore |
+| Tech Lead | Pune      |
+| PM        | Pune      |
+| DGM       | Pune      |
+| VP        | Pune      |
+| VP        | Pune      |
+| President | Pune      |
+| NULL      | Hyderabad |
++-----------+-----------+
+9 rows in set (0.01 sec)
+
+mysql> select e.job from employee as e where e.dept_id = 30
+    -> union
+    -> select d.location from departments as d where d.dept_id = 30;
++------+
+| job  |
++------+
+| DGM  |
+| Pune |
++------+
+2 rows in set (0.01 sec)
+
+mysql> select e.job,d.location from employee as e,departments as d where
+    -> e.dept_id = (select d.dept_id from departments as d where d.dept_id = 30);
++-----+-----------+
+| job | location  |
++-----+-----------+
+| DGM | Dallas    |
+| DGM | Bangalore |
+| DGM | Pune      |
+| DGM | Hyderabad |
++-----+-----------+
+4 rows in set (0.00 sec)
+
+mysql> select job from employee where dept_id = 30;
++-----+
+| job |
++-----+
+| DGM |
++-----+
+1 row in set (0.00 sec)
+
+mysql> select location from departments where dept_id = 30;
++----------+
+| location |
++----------+
+| Pune     |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select e.job,d.location from employee as e,departments as d  where e.dept_id = 30 and d.dept_id = 30;
++-----+----------+
+| job | location |
++-----+----------+
+| DGM | Pune     |
++-----+----------+
+1 row in set (0.00 sec)
+
+mysql> select e.ename,d.dname from employee as e,departments as d where e.ename like '%A%';
++----------+-------+
+| ename    | dname |
++----------+-------+
+| Venkat   | Crop  |
+| Ram      | Crop  |
+| Nanda    | Crop  |
+| Srinivas | Crop  |
+| Sameer   | Crop  |
+| Venkat   | PW    |
+| Ram      | PW    |
+| Nanda    | PW    |
+| Srinivas | PW    |
+| Sameer   | PW    |
+| Venkat   | SP    |
+| Ram      | SP    |
+| Nanda    | SP    |
+| Srinivas | SP    |
+| Sameer   | SP    |
+| Venkat   | MS    |
+| Ram      | MS    |
+| Nanda    | MS    |
+| Srinivas | MS    |
+| Sameer   | MS    |
++----------+-------+
+20 rows in set (0.01 sec)
+
+mysql> select distinct e.ename,d.dname from employee as e,departments as d where e.ename like '%A%';
++----------+-------+
+| ename    | dname |
++----------+-------+
+| Venkat   | Crop  |
+| Ram      | Crop  |
+| Nanda    | Crop  |
+| Srinivas | Crop  |
+| Sameer   | Crop  |
+| Venkat   | PW    |
+| Ram      | PW    |
+| Nanda    | PW    |
+| Srinivas | PW    |
+| Sameer   | PW    |
+| Venkat   | SP    |
+| Ram      | SP    |
+| Nanda    | SP    |
+| Srinivas | SP    |
+| Sameer   | SP    |
+| Venkat   | MS    |
+| Ram      | MS    |
+| Nanda    | MS    |
+| Srinivas | MS    |
+| Sameer   | MS    |
++----------+-------+
+20 rows in set (0.00 sec)
+
+mysql> select distinct e.ename,d.dname from employee as e left join departments as d on e.ename like '%A%';
++----------+-------+
+| ename    | dname |
++----------+-------+
+| Sameer   | MS    |
+| Sameer   | SP    |
+| Sameer   | PW    |
+| Sameer   | Crop  |
+| Srinivas | MS    |
+| Srinivas | SP    |
+| Srinivas | PW    |
+| Srinivas | Crop  |
+| Nanda    | MS    |
+| Nanda    | SP    |
+| Nanda    | PW    |
+| Nanda    | Crop  |
+| Ram      | MS    |
+| Ram      | SP    |
+| Ram      | PW    |
+| Ram      | Crop  |
+| Vivek    | NULL  |
+| Venkat   | MS    |
+| Venkat   | SP    |
+| Venkat   | PW    |
+| Venkat   | Crop  |
++----------+-------+
+21 rows in set (0.00 sec)
+
+mysql> select e.ename,e.job,d.dept_id,d.dname from employee as e inner join departments as d on d.location = 'DALLAS';
++----------+-----------+---------+-------+
+| ename    | job       | dept_id | dname |
++----------+-----------+---------+-------+
+| Sameer   | President |      10 | Crop  |
+| Srinivas | VP        |      10 | Crop  |
+| Nanda    | VP        |      10 | Crop  |
+| Ram      | DGM       |      10 | Crop  |
+| Vivek    | PM        |      10 | Crop  |
+| Venkat   | Tech Lead |      10 | Crop  |
++----------+-----------+---------+-------+
+6 rows in set (0.00 sec)
+
+mysql> select distinct e.ename,e.job,d.dept_id,d.dname from employee as e inner join departments as d on d.location = 'DALLAS';
++----------+-----------+---------+-------+
+| ename    | job       | dept_id | dname |
++----------+-----------+---------+-------+
+| Sameer   | President |      10 | Crop  |
+| Srinivas | VP        |      10 | Crop  |
+| Nanda    | VP        |      10 | Crop  |
+| Ram      | DGM       |      10 | Crop  |
+| Vivek    | PM        |      10 | Crop  |
+| Venkat   | Tech Lead |      10 | Crop  |
++----------+-----------+---------+-------+
+6 rows in set (0.00 sec)
+
+mysql> select distinct e.ename,e.job,d.dept_id,d.dname from employee as e inner join departments as d on e.dept_id = (select d.dept_id from departments as d where d.location='DALLAS');
++----------+-----------+---------+-------+
+| ename    | job       | dept_id | dname |
++----------+-----------+---------+-------+
+| Srinivas | VP        |      10 | Crop  |
+| Sameer   | President |      10 | Crop  |
+| Srinivas | VP        |      20 | PW    |
+| Sameer   | President |      20 | PW    |
+| Srinivas | VP        |      30 | SP    |
+| Sameer   | President |      30 | SP    |
+| Srinivas | VP        |      40 | MS    |
+| Sameer   | President |      40 | MS    |
++----------+-----------+---------+-------+
+8 rows in set (0.00 sec)
+
+mysql> select e.ename,e.job,d.dept_id,d.dname from employee as e inner join departments as d on d.location = 'DALLAS' and d.dept_id=10;
++----------+-----------+---------+-------+
+| ename    | job       | dept_id | dname |
++----------+-----------+---------+-------+
+| Sameer   | President |      10 | Crop  |
+| Srinivas | VP        |      10 | Crop  |
+| Nanda    | VP        |      10 | Crop  |
+| Ram      | DGM       |      10 | Crop  |
+| Vivek    | PM        |      10 | Crop  |
+| Venkat   | Tech Lead |      10 | Crop  |
++----------+-----------+---------+-------+
+6 rows in set (0.00 sec)
+
+mysql> select e.ename,e.job,d.dept_id,d.dname from employee as e right join departments as d on d.location = 'DALLAS';
++----------+-----------+---------+-------+
+| ename    | job       | dept_id | dname |
++----------+-----------+---------+-------+
+| Venkat   | Tech Lead |      10 | Crop  |
+| Vivek    | PM        |      10 | Crop  |
+| Ram      | DGM       |      10 | Crop  |
+| Nanda    | VP        |      10 | Crop  |
+| Srinivas | VP        |      10 | Crop  |
+| Sameer   | President |      10 | Crop  |
+| NULL     | NULL      |      20 | PW    |
+| NULL     | NULL      |      30 | SP    |
+| NULL     | NULL      |      40 | MS    |
++----------+-----------+---------+-------+
+9 rows in set (0.00 sec)
+
+mysql> select ename from employee where mgr_id is null;
++--------+
+| ename  |
++--------+
+| Sameer |
++--------+
+1 row in set (0.00 sec)
+
+mysql> select ename as 'Employee',emp_id as 'Emp No.',mgr_id as 'Manager No.' from employee;
++----------+---------+-------------+
+| Employee | Emp No. | Manager No. |
++----------+---------+-------------+
+| Sameer   |     101 |        NULL |
+| Srinivas |     102 |         101 |
+| Nanda    |     103 |         101 |
+| Ram      |     104 |         102 |
+| Vivek    |     105 |         103 |
+| Venkat   |     106 |         105 |
++----------+---------+-------------+
+6 rows in set (0.00 sec)
+
+mysql> desc salgrades;
++---------+---------+------+-----+---------+-------+
+| Field   | Type    | Null | Key | Default | Extra |
++---------+---------+------+-----+---------+-------+
+| grade   | char(1) | NO   | PRI | NULL    |       |
+| min_sal | int     | NO   |     | NULL    |       |
+| max_sal | int     | NO   |     | NULL    |       |
++---------+---------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> select e.ename,e.job,e.dept_id,e.bsal,s.grade from employee e cross join salgrades s;
++----------+-----------+---------+--------+-------+
+| ename    | job       | dept_id | bsal   | grade |
++----------+-----------+---------+--------+-------+
+| Sameer   | President |      10 | 500000 | C     |
+| Sameer   | President |      10 | 500000 | B     |
+| Sameer   | President |      10 | 500000 | A     |
+| Srinivas | VP        |      10 | 400000 | C     |
+| Srinivas | VP        |      10 | 400000 | B     |
+| Srinivas | VP        |      10 | 400000 | A     |
+| Nanda    | VP        |      20 | 400000 | C     |
+| Nanda    | VP        |      20 | 400000 | B     |
+| Nanda    | VP        |      20 | 400000 | A     |
+| Ram      | DGM       |      30 |  35000 | C     |
+| Ram      | DGM       |      30 |  35000 | B     |
+| Ram      | DGM       |      30 |  35000 | A     |
+| Vivek    | PM        |      20 | 300000 | C     |
+| Vivek    | PM        |      20 | 300000 | B     |
+| Vivek    | PM        |      20 | 300000 | A     |
+| Venkat   | Tech Lead |      20 |  25000 | C     |
+| Venkat   | Tech Lead |      20 |  25000 | B     |
+| Venkat   | Tech Lead |      20 |  25000 | A     |
++----------+-----------+---------+--------+-------+
+18 rows in set (0.00 sec)
+
